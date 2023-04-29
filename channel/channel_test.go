@@ -1,4 +1,4 @@
-package main
+package channel
 
 import (
 	"io/ioutil"
@@ -11,7 +11,7 @@ import (
 	"github.com/eduncan911/podcast"
 )
 
-func Test_storeOutput(t *testing.T) {
+func Test_StoreOutput(t *testing.T) {
 	f, err := os.CreateTemp("", "v2casttest")
 	if err != nil {
 		log.Fatal(err)
@@ -63,7 +63,9 @@ func Test_storeOutput(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := storeOutput(tt.args.p, tt.args.outputFile)
+			c := New("")
+			c.Podcast = tt.args.p
+			err := c.StoreOutput(tt.args.outputFile)
 			if err != nil {
 				if !tt.args.wantErr {
 					t.Errorf("Error while storing the file: %v", err)

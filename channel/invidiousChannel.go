@@ -8,8 +8,6 @@ import (
 	"git.sr.ht/~greenfoo/govidious"
 )
 
-const DefaultInvidiousInstance = "https://inv.bp.projectsegfau.lt"
-
 type VideoContent struct {
 	Title               string
 	YtUrl               string
